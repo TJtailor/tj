@@ -3,48 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connecting to TJ Tailorworks...</title>
+    <title>TJ Tailorworks System</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             background-color: #0b132b;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
             text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: #1c2541;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
         }
         .loader {
-            border: 4px solid #1c2541;
+            border: 4px solid #3a506b;
             border-top: 4px solid #d4af37;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        p {
+            font-size: 0.95rem;
+            color: #a3cef1;
+            line-height: 1.5;
+        }
     </style>
     <script>
-        // ใส่ URL ที่ได้จาก Cloudflare Tunnel ในขั้นตอนที่ 3 ตรงนี้
-        const SERVER_URL = "https://YOUR-TUNNEL-URL.trycloudflare.com"; 
-        
-        if (SERVER_URL.includes("YOUR-TUNNEL-URL")) {
-            document.addEventListener("DOMContentLoaded", () => {
-                document.getElementById("status").textContent = "กรุณาใส่ Cloudflare URL ในไฟล์ index.html";
-            });
-        } else {
-            window.location.href = SERVER_URL;
-        }
+        // วาง URL ที่ได้จาก Cloudflare Tunnel ตรงนี้
+        const SERVER_URL = "https://made-previous-stanley-organizing.trycloudflare.com"; 
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const statusText = document.getElementById("status");
+
+            if (!SERVER_URL || SERVER_URL.includes("YOUR-TUNNEL-URL")) {
+                statusText.textContent = "กรุณาระบุ Cloudflare URL ในไฟล์ index.html";
+                statusText.style.color = "#ff6b6b";
+            } else {
+                // เปลี่ยนหน้าทันที
+                window.location.href = SERVER_URL;
+            }
+        });
     </script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <div class="loader"></div>
-        <p id="status">กำลังเชื่อมต่อไปยัง TJ Tailorworks Server...</p>
+        <h2>TJ Tailorworks</h2>
+        <p id="status">กำลังเชื่อมต่อไปยังเซิร์ฟเวอร์...</p>
     </div>
 </body>
 </html>
-
