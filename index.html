@@ -1,12 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
-  <!-- เปลี่ยน URL ใน content ด้านล่างเป็น URL ยาวของคุณ -->
-  <meta http-equiv="refresh" content="0; url=https://talk-luggage-photographic-acquisitions.trycloudflare.com">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #00122e; /* พื้นหลังสีกรมท่าเข้ม */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ตัวหนังสือ Welcome สีทอง 3D */
+    .welcome-text {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      
+      /* ไล่เฉดสีทอง */
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      /* สร้างมิติ 3D ด้วยเงาหลายชั้น */
+      text-shadow: 
+        1px 1px 0px #7a5813,
+        2px 2px 0px #61440c,
+        3px 3px 0px #473106,
+        4px 4px 0px #2e1f02,
+        5px 5px 15px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.3);
+
+      /* การกระพริบ 2 ครั้ง (0.8s * 2 = 1.6s) แล้วค้างไว้ */
+      animation: blink3D 0.8s ease-in-out 2 forwards;
+    }
+
+    /* Keyframes สำหรับเอฟเฟกต์กระพริบ */
+    @keyframes blink3D {
+      0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 15px rgba(255, 223, 0, 0.8));
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.1;
+        filter: drop-shadow(0 0 0px rgba(0, 0, 0, 0));
+        transform: scale(0.98);
+      }
+    }
+
+    /* ข้อความแจ้งเตือนและลิงก์สำรอง */
+    .redirect-info {
+      margin-top: 30px;
+      color: #d4af37;
+      font-size: 1rem;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in 1.6s forwards; /* ปรากฏขึ้นหลังจากกระพริบครบ 2 ครั้ง */
+    }
+
+    .redirect-info a {
+      color: #fff8d6;
+      text-decoration: underline;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .redirect-info a:hover {
+      color: #ffea79;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 0.8;
+      }
+    }
+
+    /* ย่อขนาดตัวอักษรสำหรับหน้าจอขนาดเล็ก */
+    @media (max-width: 600px) {
+      .welcome-text {
+        font-size: 3rem;
+        letter-spacing: 2px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>กำลังนำคุณไปยังหน้าเว็บ... หากระบบไม่เปลี่ยนหน้าอัตโนมัติ <a href="https://talk-luggage-photographic-acquisitions.trycloudflare.com">คลิกที่นี่</a></p>
+
+  <h1 class="welcome-text">WELCOME</h1>
+
+  <div class="redirect-info">
+    กำลังนำคุณไปยังหน้าเว็บ... หากระบบไม่เปลี่ยนหน้าอัตโนมัติ 
+    <a href="https://talk-luggage-photographic-acquisitions.trycloudflare.com">คลิกที่นี่</a>
+  </div>
+
+  <script>
+    // URL ที่ต้องการ Redirect ไป
+    const targetUrl = "https://talk-luggage-photographic-acquisitions.trycloudflare.com";
+
+    // กระพริบ 2 ครั้งใช้เวลา 1.6 วินาที จึงตั้งเวลาให้หน่วง 2 วินาที (2000ms) ก่อนเปลี่ยนหน้า
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 2000);
+  </script>
+
 </body>
 </html>
