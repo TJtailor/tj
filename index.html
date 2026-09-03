@@ -1,96 +1,12 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
-  
-  <!-- โหลดฟอนต์ Cinematic / Elegant จาก Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      /* พื้นหลังสีกรมท่าเข้มพิเศษ */
-      background: radial-gradient(circle at center, #0a1329 0%, #020612 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: 'Cinzel', serif;
-      overflow: hidden;
-    }
-
-    /* ตัวหนังสือ WELCOME สีทอง 3D */
-    .welcome-text {
-      font-size: 5rem;
-      font-weight: 800;
-      letter-spacing: 12px;
-      text-transform: uppercase;
-      text-align: center;
-      
-      /* ไล่เฉดสีทอง */
-      background: linear-gradient(135deg, #c5a059 0%, #fdf0a6 25%, #d4af37 50%, #fef9d7 75%, #a37c3f 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      /* มิติ 3D คมชัด */
-      text-shadow: 
-        1px 1px 0px #826227,
-        2px 2px 0px #614619,
-        3px 3px 0px #3f2c0d,
-        4px 4px 10px rgba(0, 0, 0, 0.9);
-
-      /* เอฟเฟกต์ค่อยๆ สว่างขึ้น */
-      opacity: 0;
-      animation: smoothFadeInGlow 1.2s ease-out forwards;
-    }
-
-    /* แอนิเมชัน ค่อยๆ สว่างขึ้นอย่างนุ่มนวล */
-    @keyframes smoothFadeInGlow {
-      0% {
-        opacity: 0;
-        transform: scale(0.95);
-        filter: drop-shadow(0 0 0px rgba(212, 175, 55, 0));
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-        filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.6));
-      }
-    }
-
-    /* รองรับหน้าจอมือถือ */
-    @media (max-width: 600px) {
-      .welcome-text {
-        font-size: 2.8rem;
-        letter-spacing: 6px;
-      }
-    }
-  </style>
+  <title>Redirecting...</title>
+  <!-- เปลี่ยน URL ใน content ด้านล่างเป็น URL ยาวของคุณ -->
+  <meta http-equiv="refresh" content="0; url=https://talk-luggage-photographic-acquisitions.trycloudflare.com">
 </head>
 <body>
-
-  <h1 class="welcome-text">WELCOME</h1>
-
-  <script>
-    // URL ปลายทาง
-    const targetUrl = "https://talk-luggage-photographic-acquisitions.trycloudflare.com";
-
-    // ค่อยๆ สว่างขึ้น 1.2 วินาที แล้วเปิดเข้าลิงก์ทันที
-    setTimeout(() => {
-      window.location.href = targetUrl;
-    }, 1300);
-  </script>
-
+  <p>กำลังนำคุณไปยังหน้าเว็บ... หากระบบไม่เปลี่ยนหน้าอัตโนมัติ <a href="https://talk-luggage-photographic-acquisitions.trycloudflare.com">คลิกที่นี่</a></p>
 </body>
-</html>
-
-
+</html>    
