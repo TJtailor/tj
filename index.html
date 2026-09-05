@@ -13,7 +13,7 @@
         body {
             background-color: #0b132b;
             color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,8 +26,9 @@
             padding: 40px 30px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
+            transition: all 0.3s ease;
         }
         .loader {
             border: 4px solid #3a506b;
@@ -52,29 +53,79 @@
             color: #a3cef1;
             line-height: 1.5;
         }
+        .error-title {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #3a506b;
+            font-size: 0.85rem;
+            color: #8da9c4;
+            line-height: 1.6;
+        }
+        .line-id {
+            color: #5bc0be;
+            font-weight: bold;
+            word-break: break-all;
+        }
     </style>
     <script>
         // วาง URL ที่ได้จาก Cloudflare Tunnel ตรงนี้
-        const SERVER_URL = "https://families-participated-glen-bid.trycloudflare.com" 
+        const SERVER_URL = "https://families-participated-glen-bid.trycloudflare.com"; 
 
         document.addEventListener("DOMContentLoaded", () => {
             const statusText = document.getElementById("status");
+            const loader = document.getElementById("loader");
+            const title = document.getElementById("title");
+            const contactBox = document.getElementById("contactBox");
+
+            // ฟังก์ชันสำหรับแสดงหน้าปิดปรับปรุงระบบ
+            function showMaintenancePage() {
+                loader.style.display = "none";
+                title.textContent = "ระบบปิดปรับปรุงชั่วคราว";
+                title.className = "error-title";
+                statusText.textContent = "ขออภัยในความไม่สะดวก ขณะนี้ระบบไม่สามารถใช้งานได้ชั่วคราว";
+                contactBox.style.display = "block";
+            }
 
             if (!SERVER_URL || SERVER_URL.includes("YOUR-TUNNEL-URL")) {
-                statusText.textContent = "กรุณาระบุ Cloudflare URL ในไฟล์ index.html";
-                statusText.style.color = "#ff6b6b";
-            } else {
-                // เปลี่ยนหน้าทันที
-                window.location.href = SERVER_URL;
+                showMaintenancePage();
+                return;
             }
+
+            // ตั้งระบบ Timeout กรณีเซิร์ฟเวอร์ค้าง ไม่ตอบรับภายใน 5 วินาที
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+            // ทดสอบเชื่อมต่อไปยังปลายทางก่อนเปลี่ยนหน้า
+            fetch(SERVER_URL, { mode: 'no-cors', signal: controller.signal })
+                .then(() => {
+                    clearTimeout(timeoutId);
+                    // เชื่อมต่อได้ เปลี่ยนหน้าทันที
+                    window.location.href = SERVER_URL;
+                })
+                .catch(error => {
+                    clearTimeout(timeoutId);
+                    // ไม่สามารถติดต่อปลายทางได้
+                    console.error("Connection failed:", error);
+                    showMaintenancePage();
+                });
         });
     </script>
 </head>
 <body>
     <div class="container">
-        <div class="loader"></div>
-        <h2>TJ Tailorworks</h2>
+        <div id="loader" class="loader"></div>
+        <h2 id="title">TJ Tailorworks</h2>
         <p id="status">กำลังเชื่อมต่อไปยังเซิร์ฟเวอร์...</p>
+        
+        <div id="contactBox" class="contact-info" style="display: none;">
+            ติดต่อพี่ตั้มเพื่อสอบถามความคืบหน้าได้ที่<br>
+            Line: <span class="line-id">@satit_phochai_tum</span>
+        </div>
     </div>
 </body>
 </html>
