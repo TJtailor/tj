@@ -58,8 +58,16 @@
             font-size: 1.5rem;
             margin-bottom: 12px;
         }
+        .maintenance-img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            margin: 20px auto 15px;
+            display: block;
+            border-radius: 10px;
+        }
         .contact-info {
-            margin-top: 20px;
+            margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #3a506b;
             font-size: 0.85rem;
@@ -81,6 +89,7 @@
             const loader = document.getElementById("loader");
             const title = document.getElementById("title");
             const contactBox = document.getElementById("contactBox");
+            const maintenanceImg = document.getElementById("maintenanceImg");
 
             // ฟังก์ชันสำหรับแสดงหน้าปิดปรับปรุงระบบ
             function showMaintenancePage() {
@@ -88,6 +97,7 @@
                 title.textContent = "ปิดปรับปรุง";
                 title.className = "error-title";
                 statusText.textContent = "ขออภัยในความไม่สะดวก ขณะนี้ระบบไม่สามารถใช้งานได้ชั่วคราว";
+                maintenanceImg.style.display = "block";
                 contactBox.style.display = "block";
             }
 
@@ -121,6 +131,9 @@
         <div id="loader" class="loader"></div>
         <h2 id="title">TJ Tailorworks</h2>
         <p id="status">กำลังเชื่อมต่อไปยังเซิร์ฟเวอร์...</p>
+        
+        <!-- รูปภาพแสดงเมื่อเข้าสู่หน้าปิดปรับปรุง อยู่เหนือเส้นบรรทัดติดต่อ -->
+        <img id="maintenanceImg" class="maintenance-img" src="https://img1.pic.in.th/images/Gemini_Generated_Image_b4gd4wb4gd4wb4gd.jpg" alt="ระบบปิดปรับปรุง" style="display: none;">
         
         <div id="contactBox" class="contact-info" style="display: none;">
             ติดต่อพี่ตั้มเพื่อสอบถามความคืบหน้าได้ที่<br>
